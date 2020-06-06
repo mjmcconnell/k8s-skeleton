@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  terragrunt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./terraform:/opt/terraform
+      - ./gcp_creditials.json:/opt/gcp_creditials.json
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /opt/gcp_creditials.json
+    command: /bin/bash
